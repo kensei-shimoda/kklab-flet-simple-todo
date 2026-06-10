@@ -111,7 +111,7 @@ class TodoApp(ft.Column):
 
         self.flag_only = False
         self.flag_toggle = ft.TextButton(
-            content="🚩 フラグのみ表示",
+            content="[旗] フラグのみ表示",
             on_click=self.toggle_flag_filter,
         )
 
@@ -154,7 +154,6 @@ class TodoApp(ft.Column):
             task = Task(self.new_task.value, self.task_delete)
             self.tasks.controls.append(task)
             self.new_task.value = ""
-            await self.new_task.focus()
             self.update()
 
     def task_delete(self, task):
@@ -167,7 +166,7 @@ class TodoApp(ft.Column):
 
     def toggle_flag_filter(self, e):
         self.flag_only = not self.flag_only
-        self.flag_toggle.content = "📋 全タスク表示" if self.flag_only else "🚩 フラグのみ表示"
+        self.flag_toggle.content = "[全て] 全タスク表示" if self.flag_only else "[旗] フラグのみ表示"
         self.update()
 
     def before_update(self):
